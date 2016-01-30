@@ -32,9 +32,24 @@ void BlowingDetector::setOnDetectedCallback(OnDetectedCallback callback)
 void BlowingDetector::update(float dt)
 {
     BlowingDetectorImpl *detector = [BlowingDetectorImpl sharedDetector];
-    if ([detector isDetected]) {
+    if ([detector isDetected:dt]) {
         if (_onDetectedCallback != nullptr) {
             _onDetectedCallback([detector averagePowerForChannel:0]);
         }
     }
+}
+
+float BlowingDetector::getAveragePowerForChannel(int channel)
+{
+    return [[BlowingDetectorImpl sharedDetector] averagePowerForChannel:channel];
+}
+
+void BlowingDetector::setRequiredBrowingDuration(float blowingDuration)
+{
+    [[BlowingDetectorImpl sharedDetector] setRequireBlowingDuration:blowingDuration];
+}
+
+void BlowingDetector::setAverageThreshold(float threshold)
+{
+    [[BlowingDetectorImpl sharedDetector] setAverageThreshold:threshold];
 }

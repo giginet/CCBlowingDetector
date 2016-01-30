@@ -35,15 +35,23 @@
         self.recorder.meteringEnabled = YES;
         [self.recorder record];
     }
+    _averageThreshold = -5;
+    _blowingDuration = 0;
+    _requireBlowingDuration = 0;
     return self;
 }
 
-- (BOOL)isDetected
+- (BOOL)isDetected:(float)dt
 {
     [self.recorder updateMeters];
     float average = [self averagePowerForChannel:0];
-    if (average > -1) {
-        return YES;
+    if (average > self.averageThreshold) {
+        _blowingDuration += dt;
+        if (self.blowingDuration >= self.requireBlowingDuration) {
+            return YES;
+        }
+    } else {
+        _blowingDuration = 0;
     }
     return NO;
 }
