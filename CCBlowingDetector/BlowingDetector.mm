@@ -29,12 +29,23 @@ void BlowingDetector::setOnDetectedCallback(OnDetectedCallback callback)
     _onDetectedCallback = callback;
 }
 
+void BlowingDetector::setOnPowerUpdatedCallback(OnUpdatedCallback callback)
+{
+    _onPowerUpdatedCallback = callback;
+}
+
 void BlowingDetector::update(float dt)
 {
     BlowingDetectorImpl *detector = [BlowingDetectorImpl sharedDetector];
+    float peak = [detector peakPowerForChannel:0];
+    float average = [detector averagePowerForChannel:0];
+    if (_onPowerUpdatedCallback != nullptr) {
+        _onPowerUpdatedCallback(peak, average);
+    }
+    
     if ([detector isDetected:dt]) {
         if (_onDetectedCallback != nullptr) {
-            _onDetectedCallback([detector averagePowerForChannel:0]);
+            _onDetectedCallback(average);
         }
     }
 }
