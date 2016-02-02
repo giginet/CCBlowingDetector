@@ -44,6 +44,11 @@ float BlowingDetector::getAveragePowerForChannel(int channel)
     return [[BlowingDetectorImpl sharedDetector] averagePowerForChannel:channel];
 }
 
+float BlowingDetector::getPeakPowerForChannel(int channel)
+{
+    return [[BlowingDetectorImpl sharedDetector] peakPowerForChannel:channel];
+}
+
 void BlowingDetector::setRequiredBrowingDuration(float blowingDuration)
 {
     [[BlowingDetectorImpl sharedDetector] setRequireBlowingDuration:blowingDuration];

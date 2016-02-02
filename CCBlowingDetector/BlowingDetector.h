@@ -9,13 +9,16 @@ class BlowingDetector
     OnDetectedCallback _onDetectedCallback;
 public:
     static BlowingDetector* getInstance();
-    float getAveragePowerForChannel(int channel);
-    void setOnDetectedCallback(OnDetectedCallback callback);
     BlowingDetector();
+    
+    float getAveragePowerForChannel(int channel);
+    float getPeakPowerForChannel(int channel);
+    
     void update(float dt);
     void initialize();
     void setRequiredBrowingDuration(float blowingDuration);
     void setAverageThreshold(float threshold);
+    void setOnDetectedCallback(OnDetectedCallback callback);
 };
 
 #endif /* BlowingDetector_hpp */

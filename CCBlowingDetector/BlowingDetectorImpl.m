@@ -43,7 +43,6 @@
 
 - (BOOL)isDetected:(float)dt
 {
-    [self.recorder updateMeters];
     float average = [self averagePowerForChannel:0];
     if (average > self.averageThreshold) {
         _blowingDuration += dt;
@@ -61,6 +60,13 @@
     [self.recorder updateMeters];
     float average = [self.recorder averagePowerForChannel:0];
     return average;
+}
+
+- (float)peakPowerForChannel:(NSUInteger)channelNumber
+{
+    [self.recorder updateMeters];
+    float peak = [self.recorder peakPowerForChannel:0];
+    return peak;
 }
 
 @end
