@@ -1,7 +1,7 @@
 #ifndef BlowingDetector_hpp
 #define BlowingDetector_hpp
 
-typedef std::function<void (float peak)> OnDetectedCallback;
+typedef std::function<void (float peak, float average)> OnDetectedCallback;
 typedef std::function<void (float peak, float average)> OnUpdatedCallback;
 
 class BlowingDetector 

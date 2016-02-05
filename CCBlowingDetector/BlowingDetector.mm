@@ -45,7 +45,7 @@ void BlowingDetector::update(float dt)
     
     if ([detector isDetected:dt]) {
         if (_onDetectedCallback != nullptr) {
-            _onDetectedCallback(average);
+            _onDetectedCallback(peak, average);
         }
     }
 }
