@@ -13,7 +13,7 @@ This plugin supports iOS only.
 
 # Sample
 
-```
+```cpp
 #include "CCBlowingDetector.h"
 
 bool YourScene::init() {
