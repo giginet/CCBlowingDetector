@@ -50,6 +50,11 @@ void BlowingDetector::update(float dt)
     }
 }
 
+bool BlowingDetector::isGranted()
+{
+    return [[BlowingDetectorImpl sharedDetector] isGranted];
+}
+
 float BlowingDetector::getAveragePowerForChannel(int channel)
 {
     return [[BlowingDetectorImpl sharedDetector] averagePowerForChannel:channel];

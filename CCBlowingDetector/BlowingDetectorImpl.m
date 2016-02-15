@@ -55,6 +55,11 @@
     return NO;
 }
 
+- (BOOL)isGranted
+{
+    return [[AVAudioSession sharedInstance] recordPermission] == AVAudioSessionRecordPermissionGranted;
+}
+
 - (float)averagePowerForChannel:(NSUInteger)channelNumber
 {
     [self.recorder updateMeters];

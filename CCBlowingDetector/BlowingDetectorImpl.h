@@ -6,6 +6,7 @@
 + (instancetype)sharedDetector;
 - (BOOL)initialize;
 - (BOOL)isDetected:(float)dt;
+- (BOOL)isGranted;
 - (float)averagePowerForChannel:(NSUInteger)channelNumber;
 - (float)peakPowerForChannel:(NSUInteger)channelNumber;
 

@@ -16,6 +16,7 @@ public:
     float getAveragePowerForChannel(int channel);
     float getPeakPowerForChannel(int channel);
     
+    bool isGranted();
     void update(float dt);
     void initialize();
     void setRequiredBrowingDuration(float blowingDuration);
